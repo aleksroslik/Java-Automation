@@ -1,0 +1,36 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Testy1
+{
+    WebDriver driver;
+
+    @BeforeEach
+    public void setUp()
+    {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().setSize(new Dimension(1280, 720));
+    }
+
+    @AfterEach
+    public void Close()
+    {
+        driver.close();
+    }
+
+    @Test
+    public void demoTest()
+    {
+        driver.get("https://www.google.pl");
+        driver.navigate().to("https://amazon.co.uk");
+        driver.navigate().back();
+        driver.navigate().forward();
+
+    }
+
+}
