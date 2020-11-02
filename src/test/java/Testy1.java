@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Dimension;
@@ -30,6 +31,15 @@ public class Testy1
         driver.navigate().to("https://amazon.co.uk");
         driver.navigate().back();
         driver.navigate().forward();
+
+    }
+
+    @Test
+    public void pageSource()
+    {
+        String wikiLanguage = "lang=\"pl\"";
+        driver.navigate().to("https://www.wikipedia.pl");
+        Assertions.assertTrue(driver.getPageSource().contains(wikiLanguage), "page does not contain" + wikiLanguage);
 
     }
 
