@@ -38,7 +38,7 @@ public class ZadanieProsteLokatory
 
         //3. Znajdz pole do wpisania hasla.
 
-        driver.findElement(By.name("password"));
+        driver.findElement(By.xpath(".//input[@autocomplete='current-password']"));
 
         //4. Zlokalizuj przycisk do logowania.
 
