@@ -9,8 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Set;
 
-import static java.lang.Thread.*;
-
 public class ZadanieCookies
 {
     WebDriver driver;
@@ -43,12 +41,15 @@ public class ZadanieCookies
             e.printStackTrace();
         }
         Assertions.assertEquals(4, driver.manage().getCookies().size(), "the number of cookies is not " + cookies);
+
         //2. Dodaj swoje ciasteczko i potwierdź asercją, że się dodało.
         Cookie newCookie = new Cookie("test_cookie", "test_value");
         driver.manage().addCookie(newCookie);
         Assertions.assertEquals(5, driver.manage().getCookies().size(), "the number of cookies is not " + cookies);
+
         //3. Pobierz swoje ciasteczko i użyj asercji, żeby porównać, że nazwa ciasteczka jest taka, jakiej oczekujesz.
         Assertions.assertEquals(newCookie.getName(), driver.manage().getCookieNamed("test_cookie").getName(),"name of the cookie does not equal" + newCookie);
+        
         //4. Usuń swoje ciasteczko używając obiektu typu Cookie jako parametru i potwierdź, że zostało usunięte.
         driver.manage().deleteCookieNamed("test_cookie");
         Assertions.assertEquals(4, driver.manage().getCookies().size(), "the number of cookies is not " + cookies);
