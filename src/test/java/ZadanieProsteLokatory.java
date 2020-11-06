@@ -56,5 +56,9 @@ public class ZadanieProsteLokatory
 
         driver.findElement(By.linkText("Żeglarstwo"));
 
+        //znajdz link do strony głownej i przejdz do strony glownej
+
+        driver.findElement(By.cssSelector("[id='menu-item-197'] [href='https://fakestore.testelka.pl']")).click();
+
     }
 }
