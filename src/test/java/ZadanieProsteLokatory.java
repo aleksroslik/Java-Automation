@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ZadanieProsteLokatory
 {
@@ -26,8 +29,7 @@ public class ZadanieProsteLokatory
     }
 
     @Test
-    public void prosteLokatory()
-    {
+    public void prosteLokatory() throws InterruptedException {
         //1. Znajdz okienko "Szukaj produktów".
 
         driver.findElement(By.id("woocommerce-product-search-field-0"));
@@ -35,6 +37,7 @@ public class ZadanieProsteLokatory
         //2. Znajdz pole do wpisania nazwy uzytkownika.
 
         driver.findElement(By.id("username"));
+        driver.findElement(By.cssSelector("#reg_email[name='email']"));
 
         //3. Znajdz pole do wpisania hasla.
 
@@ -59,6 +62,8 @@ public class ZadanieProsteLokatory
         //znajdz link do strony głownej i przejdz do strony glownej
 
         driver.findElement(By.cssSelector("[id='menu-item-197'] [href='https://fakestore.testelka.pl']")).click();
+
+        driver.findElement(By.xpath(".//a[@href='?add-to-cart=4116']"));
 
     }
 }
