@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -46,5 +48,17 @@ public class Interakcje {
         driver.findElement(By.cssSelector("[name='login']")).sendKeys("malaMi");
         driver.findElement(By.cssSelector("[name='password']")).sendKeys("hasłotestowe");
         driver.findElement(By.xpath("//body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/button[1]")).submit();
+    }
+
+    @Test
+    public void fileUpload()
+    {
+        driver.navigate().to("https://gofile.io/uploadFiles");
+        WebElement uploadFileInput = driver.findElement(By.cssSelector("input[type='file']"));
+        String path = "C:\\Users\\Rossliczq\\Desktop\\dziurawe_owoce_ZOSIA_R.jpg";
+        uploadFileInput.sendKeys(path);
+        String actualFileName = driver.findElement(By.xpath("//td[contains(text(),'dziurawe_owoce_ZOSIA_R.jpg')]")).getText();
+        String expectedFileName = "dziurawe_owoce_ZOSIA_R.jpg";
+        Assertions.assertEquals(expectedFileName, actualFileName, "not equal");
     }
 }
