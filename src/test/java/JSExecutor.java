@@ -17,11 +17,15 @@ public class JSExecutor
     public void setUp()
     {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
         driver.manage().window().setSize(new Dimension(1295, 800));
         driver.manage().window().setPosition(new Point(10,40));
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.navigate().to("https://p134poznan.szkolnastrona.pl/");
+        //JavascriptExecutor js;
+        //js = (JavascriptExecutor) driver;
     }
 
     @AfterEach
@@ -40,4 +44,17 @@ public class JSExecutor
         WebElement hoverItems = driver.findElement(By.cssSelector("li.hover"));
         Assertions.assertTrue(hoverItems.isDisplayed(), "'Hover items' are not displayed");
     }
+
+    /* @Test
+    public void promptBoxTest()
+    {
+        String javascript = "prompt('Możesz tutaj coś wpisać')";
+        js.executeScript(javascript);
+        String text = driver.switchTo().alert().getText();
+        driver.switchTo().alert().sendKeys("Test");
+        driver.switchTo().alert().accept();
+        js.executeScript(javascript);
+        driver.switchTo().alert().dismiss();
+
+    } */
 }
