@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +17,7 @@ public class JSExecutor
     @BeforeEach
     public void setUp()
     {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new ChromeDriver();
         //driver = new FirefoxDriver();
